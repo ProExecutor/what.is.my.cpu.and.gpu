@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .neon-text {
+            color: #fff;
+            text-shadow:
+                0 0 5px #ff0000,
+                0 0 10px #ff0000,
+                0 0 15px #ff0000,
+                0 0 20px #ff0000,
+                0 0 30px #ff0000,
+                0 0 40px #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>System Information</h1>
+    <p id="cpuInfo">Loading CPU information...</p>
+    <p id="gpuInfo">Loading GPU information...</p>
+
+    <script>
+        // Display CPU information
+        var cpuInfo = navigator.hardwareConcurrency;
+        document.getElementById('cpuInfo').textContent = 'CPU Cores: ' + cpuInfo;
+
+        // Display GPU information
+        var canvas = document.createElement('canvas');
+        var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        var gpuInfo;
+
+        if (gl && gl instanceof WebGLRenderingContext) {
+            var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugInfo) {
+                gpuInfo = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+            } else {
+                gpuInfo = 'Unable to fetch GPU info: WEBGL_debug_renderer_info not available';
+            }
+        } else {
+            gpuInfo = 'Unable to fetch GPU info: WebGL not supported';
+        }
+
+        document.getElementById('gpuInfo').textContent = 'GPU: ' + gpuInfo;
+    </script>
+</body>
+</html>
