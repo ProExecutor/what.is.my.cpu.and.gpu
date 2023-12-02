@@ -25,6 +25,9 @@
     <p id="cpuInfo">Loading CPU information...</p>
     <p id="gpuInfo">Loading GPU information...</p>
 
+    <!-- User-Agent Display -->
+    <p id="userAgentInfo">Loading User-Agent information...</p>
+
     <script>
         // Display CPU information
         var cpuInfo = navigator.hardwareConcurrency;
@@ -47,6 +50,10 @@
         }
 
         document.getElementById('gpuInfo').textContent = 'GPU: ' + gpuInfo;
+
+        // Display User-Agent information
+        var userAgentInfo = navigator.userAgent;
+        document.getElementById('userAgentInfo').textContent = 'Your User-Agent is: ' + userAgentInfo;
     </script>
 </body>
 </html>
