@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Information with ARM Detector</title>
     <style>
         body {
             background: black;
@@ -21,14 +24,16 @@
     </style>
 </head>
 <body>
-    <h1>System Information</h1>
-    <p id="cpuInfo">Loading CPU information...</p>
-    <p id="gpuInfo">Loading GPU information...</p>
-
-    <!-- User-Agent Display -->
-    <p id="userAgentInfo">Loading User-Agent information...</p>
+    <h1 class="neon-text">System Information with ARM Architecture</h1>
+    <p id="armInfo" class="neon-text">Detecting...</p>
+    <p id="cpuInfo" class="neon-text">Loading CPU information...</p>
+    <p id="gpuInfo" class="neon-text">Loading GPU information...</p>
+    <p id="userAgentInfo" class="neon-text">Loading User-Agent information...</p>
 
     <script>
+        // ARM Architecture Detection Placeholder
+        document.getElementById('armInfo').textContent = 'Your ARM architecture is: ARMv8-A';
+
         // Display CPU information
         var cpuInfo = navigator.hardwareConcurrency;
         document.getElementById('cpuInfo').textContent = 'CPU Cores: ' + cpuInfo;
